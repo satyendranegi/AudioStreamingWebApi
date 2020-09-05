@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AudioDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Audio">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Album" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Artist" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateAddedd" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="AudioDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Audio" EntityType="Self.tbl_Audio" />
+    <FunctionImport Name="sp_AudioPagination" ReturnType="Collection(AudioDBModel.sp_AudioPagination_Result)">
+      <Parameter Name="STARTROWINDEX" Mode="In" Type="Int32" />
+      <Parameter Name="MAXIMUMROWS" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_SearchTrack" ReturnType="Collection(AudioDBModel.sp_SearchTrack_Result)">
+      <Parameter Name="SearchTrack" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_SongListByArtist" ReturnType="Collection(AudioDBModel.sp_SongListByArtist_Result)">
+      <Parameter Name="ArtistName" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_AudioPagination_Result">
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_SearchTrack_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Path" Nullable="false" />
+    <Property Type="String" Name="Album" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Artist" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateAddedd" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_SongListByArtist_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Path" Nullable="false" />
+    <Property Type="String" Name="Album" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Artist" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateAddedd" Nullable="true" />
+  </ComplexType>
+</Schema>

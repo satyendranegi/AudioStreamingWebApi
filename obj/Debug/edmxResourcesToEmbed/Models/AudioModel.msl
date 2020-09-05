@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AudioDBModelStoreContainer" CdmEntityContainer="AudioDBEntities">
+    <EntitySetMapping Name="tbl_Audio">
+      <EntityTypeMapping TypeName="AudioDBModel.tbl_Audio">
+        <MappingFragment StoreEntitySet="tbl_Audio">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Album" ColumnName="Album" />
+          <ScalarProperty Name="Artist" ColumnName="Artist" />
+          <ScalarProperty Name="DateAddedd" ColumnName="DateAddedd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_AudioPagination" FunctionName="AudioDBModel.Store.sp_AudioPagination">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AudioDBModel.sp_AudioPagination_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SearchTrack" FunctionName="AudioDBModel.Store.sp_SearchTrack">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AudioDBModel.sp_SearchTrack_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Album" ColumnName="Album" />
+          <ScalarProperty Name="Artist" ColumnName="Artist" />
+          <ScalarProperty Name="DateAddedd" ColumnName="DateAddedd" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SongListByArtist" FunctionName="AudioDBModel.Store.sp_SongListByArtist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AudioDBModel.sp_SongListByArtist_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Album" ColumnName="Album" />
+          <ScalarProperty Name="Artist" ColumnName="Artist" />
+          <ScalarProperty Name="DateAddedd" ColumnName="DateAddedd" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
